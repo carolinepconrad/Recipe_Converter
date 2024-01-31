@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Converter</title>
+</head>
+<body>
+    <script>
+        const recipe = [];
+        const measurement = [];
+        let ingredientInput;
+
+        alert("Welcome to recipe converter!");
+
+       function getServingInfo(){
+        // Get the original and new number of servings
+        let originalNum = parseInt(prompt("Please enter the original number of servings the recipe is for:"));
+        console.log("Original Serving #: " + originalNum);
+
+        let newNum = parseInt(prompt("How many servings would you like to make?"));
+        console.log("New Serving #: " + newNum);
+        }
+
+        function getIngredients(){
+        alert("Please enter the ingredients and measurements. Type 'done' when you are finished.");
+
+        // Loop to input ingredients and quantities
+        while ((ingredientInput = prompt("Please enter the ingredient (or 'done' to finish):")) !== "done") {
+            let measurementInput = parseFloat(prompt("Please enter the measurement for " + ingredientInput + " as a number:"));
+
+            // Perform proportional calculation for adjusted quantity
+            let adjustedQuantity = (measurementInput * newNum) / originalNum;
+
+            // Push ingredients and adjusted quantities to arrays
+            recipe.push(ingredientInput);
+            measurement.push(adjustedQuantity);
+
+            console.log(ingredientInput + ": " + adjustedQuantity);
+            console.log("Adjusted Quantities:\nIngredients: " + recipe.join(", ") + "\nMeasurements: " + measurement.join(", "))
+
+       }}
+
+
+        // Display the adjusted quantities
+        alert("Adjusted Quantities:\nIngredients: " + recipe.join(", ") + "\nMeasurements: " + measurement.join(", "));
+        getServingInfo();
+        getIngredients();
+   </script>
+</body>
+</html>
